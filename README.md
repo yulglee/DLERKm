@@ -34,7 +34,8 @@ In this paper, we first retrieved 146 enzymatic reaction data entries containing
    -The overall architectures of DLERkm is presented in the following figure, which consists of a enzyme sequence extraction module, a enzyme reaction extraction module, a molecular set feature extraction module, and downstream prediction module.
    ![Model Architecture](https://github.com/yulglee/DLERKm/blob/main/Dataset_file/Figure1_model_framework.jpg)
    
-   To load the RXNFP, we can use the following code:
+   -To load the RXNFP, we can use the following code:
+   
    ```python
    import torch
    from rxnfp.transformer_fingerprints import (
@@ -44,9 +45,7 @@ In this paper, we first retrieved 146 enzymatic reaction data entries containing
      model, tokenizer = get_default_model_and_tokenizer()
      rxnfp_generator = RXNBERTFingerprintGenerator(model, tokenizer)
      reaction_vector = rxnfp_generator.convert(r_smiles)
-    ```
-   To load the EMS-2, we can use the following code:
-   ```python
+   -To load the EMS-2, we can use the following code:
    import esm 
    batch_labels, batch_strs, batch_tokens = self.batch_converter(pro_seq)
    results = self.model(batch_tokens.to(device=self.device), repr_layers=[33], return_contacts=True)
