@@ -49,7 +49,7 @@ In this paper, we first retrieved 146 enzymatic reaction data entries containing
    batch_labels, batch_strs, batch_tokens = self.batch_converter(pro_seq)
    results = self.model(batch_tokens.to(device=self.device), repr_layers=[33], return_contacts=True)
    token_representations = results["representations"][33]
-    ```
+   ```
 
 ### 3.3 **script**
    - `dataloader.py` randomly splits enzymatic reactions and feed them into the DLERKm in batchsizes for training and testing.
