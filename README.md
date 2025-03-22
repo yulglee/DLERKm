@@ -50,10 +50,11 @@ In this paper, we first retrieved 146 enzymatic reaction data entries containing
    results = self.model(batch_tokens.to(device=self.device), repr_layers=[33], return_contacts=True)
    token_representations = results["representations"][33]
     ```
+
 ### 3.3 **script**
-- `dataloader.py` randomly splits enzymatic reactions and feed them into the DLERKm in batchsizes for training and testing.
-- `CBAM.py` implements the channel attention mechanism to enhance the representation of local features by emphasizing important channel information.
-- `DLERKm.py` implements DLERKm for Km value prediction.
-- `test_program.py` is used to calculate the performance metrics of DLERKm.
-- `train.py` provides the training pipeline for DLERKm.
+   - `dataloader.py` randomly splits enzymatic reactions and feed them into the DLERKm in batchsizes for training and testing.
+   - `CBAM.py` implements the channel attention mechanism to enhance the representation of local features by emphasizing important channel information.
+   - `DLERKm.py` implements DLERKm for Km value prediction.
+   - `test_program.py` is used to calculate the performance metrics of DLERKm.
+   - `train.py` provides the training pipeline for DLERKm.
 
