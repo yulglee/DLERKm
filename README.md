@@ -31,27 +31,27 @@ In this paper, we first retrieved 146 enzymatic reaction data entries containing
 
 ### 3.2 **Model**
 
-The overall architectures of DLERkm is presented in the following figure, which consists of a enzyme sequence extraction module, a enzyme reaction extraction module, a molecular set feature extraction module, and downstream prediction module.
-![Model Architecture](https://github.com/yulglee/DLERKm/blob/main/Dataset_file/Figure1_model_framework.jpg)
-
-To load the RXNFP, we can use the following code:
-```python
-import torch
-from rxnfp.transformer_fingerprints import (
- RXNBERTFingerprintGenerator, get_default_model_and_tokenizer, generate_fingerprints
-)
-  
-  model, tokenizer = get_default_model_and_tokenizer()
-  rxnfp_generator = RXNBERTFingerprintGenerator(model, tokenizer)
-  reaction_vector = rxnfp_generator.convert(r_smiles)
-     ```
-To load the EMS-2, we can use the following code:
-```python
-import esm 
-batch_labels, batch_strs, batch_tokens = self.batch_converter(pro_seq)
-results = self.model(batch_tokens.to(device=self.device), repr_layers=[33], return_contacts=True)
-token_representations = results["representations"][33]
-     ```
+   -The overall architectures of DLERkm is presented in the following figure, which consists of a enzyme sequence extraction module, a enzyme reaction extraction module, a molecular set feature extraction module, and downstream prediction module.
+   ![Model Architecture](https://github.com/yulglee/DLERKm/blob/main/Dataset_file/Figure1_model_framework.jpg)
+   
+   To load the RXNFP, we can use the following code:
+   ```python
+   import torch
+   from rxnfp.transformer_fingerprints import (
+    RXNBERTFingerprintGenerator, get_default_model_and_tokenizer, generate_fingerprints
+   )
+     
+     model, tokenizer = get_default_model_and_tokenizer()
+     rxnfp_generator = RXNBERTFingerprintGenerator(model, tokenizer)
+     reaction_vector = rxnfp_generator.convert(r_smiles)
+    ```
+   To load the EMS-2, we can use the following code:
+   ```python
+   import esm 
+   batch_labels, batch_strs, batch_tokens = self.batch_converter(pro_seq)
+   results = self.model(batch_tokens.to(device=self.device), repr_layers=[33], return_contacts=True)
+   token_representations = results["representations"][33]
+    ```
 ### 3.3 **script**
 - `dataloader.py` randomly splits enzymatic reactions and feed them into the DLERKm in batchsizes for training and testing.
 - `CBAM.py` implements the channel attention mechanism to enhance the representation of local features by emphasizing important channel information.
